@@ -1,0 +1,653 @@
+/* ─────────────────────────────────────────
+   CUSTOMIZE PAGE — Premium Biker Aesthetic
+───────────────────────────────────────── */
+
+/* ── Header Actions ── */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* ── Bike Selector Strip ── */
+.bike-selector-strip {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 20px;
+  margin-bottom: 24px;
+  scrollbar-width: none;
+}
+
+.bike-selector-strip::-webkit-scrollbar {
+  display: none;
+}
+
+.bike-selector-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  padding: 12px 18px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--transition);
+  min-width: 160px;
+  flex-shrink: 0;
+  text-align: left;
+  position: relative;
+  overflow: hidden;
+}
+
+.bike-selector-btn::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--gradient-fire);
+  transform: scaleX(0);
+  transition: transform var(--transition);
+}
+
+.bike-selector-btn:hover {
+  border-color: var(--border-metallic);
+  background: var(--bg-card-hover);
+}
+
+.bike-selector-btn:hover::before {
+  transform: scaleX(0.5);
+}
+
+.bike-selector-btn.active {
+  border-color: var(--border-active);
+  background: var(--primary-subtle);
+  box-shadow: var(--shadow-fire);
+}
+
+.bike-selector-btn.active::before {
+  transform: scaleX(1);
+}
+
+.bike-sel-cat {
+  font-size: 0.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+}
+
+.bike-selector-btn.active .bike-sel-cat {
+  color: var(--primary-light);
+}
+
+.bike-sel-name {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  letter-spacing: 0.02em;
+}
+
+.bike-selector-btn.active .bike-sel-name {
+  color: var(--text-primary);
+}
+
+.bike-sel-cc {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+/* ── Layout Grid ── */
+.customize-layout {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 20px;
+  padding-bottom: 56px;
+}
+
+/* ─────────────────────────────────────────
+   PREVIEW PANEL
+───────────────────────────────────────── */
+.preview-panel {
+  padding: 24px;
+  position: relative;
+}
+
+.preview-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 18px;
+}
+
+.preview-bike-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.preview-cat-badge {
+  display: inline-block;
+  font-size: 0.62rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border);
+  padding: 3px 10px;
+  border-radius: var(--radius-xs);
+  width: fit-content;
+}
+
+.preview-bike-name {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--text-primary);
+}
+
+.acc-count-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--primary-light);
+  background: var(--primary-subtle);
+  border: 1px solid var(--border-active);
+  padding: 5px 12px;
+  border-radius: var(--radius-xs);
+  animation: firePulse 2s infinite;
+  white-space: nowrap;
+}
+
+/* ── Photo Viewer ── */
+.photo-viewer-wrap {
+  position: relative;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-light);
+  overflow: hidden;
+  height: 320px;
+  margin-bottom: 0;
+  background: radial-gradient(ellipse at 50% 50%, #ffffff 0%, #e1e4e8 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: inset 0 2px 12px rgba(0, 0, 0, 0.05);
+}
+
+.photo-bg-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 70%, rgba(255, 107, 44, 0.15) 0%, transparent 60%);
+  pointer-events: none;
+  mix-blend-mode: multiply;
+}
+
+.bike-photo {
+  max-height: 280px;
+  max-width: 90%;
+  object-fit: contain;
+  object-position: center;
+  filter: drop-shadow(0 4px 24px rgba(0, 0, 0, 0.7));
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Hotspot Markers ── */
+.hotspot-marker {
+  position: absolute;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  transform: translate(-50%, -50%);
+  cursor: default;
+}
+
+.hotspot-emoji {
+  font-size: 1.3rem;
+  position: relative;
+  z-index: 2;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.8));
+  animation: fadeSlideIn 0.3s ease;
+}
+
+.hotspot-ring {
+  position: absolute;
+  inset: 0;
+  border: 2px solid rgba(255, 107, 44, 0.6);
+  border-radius: 50%;
+  animation: amberPulse 2s ease-out infinite;
+}
+
+.hotspot-ring.ring-2 {
+  inset: -6px;
+  border-color: rgba(255, 107, 44, 0.3);
+  animation-delay: 0.4s;
+}
+
+.preview-empty-hint {
+  position: absolute;
+  bottom: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  background: rgba(10, 11, 15, 0.75);
+  padding: 4px 14px;
+  border-radius: 99px;
+  white-space: nowrap;
+  border: 1px solid var(--border);
+  pointer-events: none;
+}
+
+/* ── Selection Summary ── */
+.preview-summary {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+
+.summary-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.summary-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+}
+
+.btn-clear-link {
+  background: none;
+  border: none;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: color var(--transition);
+}
+
+.btn-clear-link:hover {
+  color: var(--danger);
+}
+
+.summary-items {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  max-height: 160px;
+  overflow-y: auto;
+  margin-bottom: 12px;
+}
+
+.summary-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 8px;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border-light);
+  font-size: 0.8rem;
+}
+
+.summary-item-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  min-width: 0;
+}
+
+.summary-cat-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.summary-item-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--text-secondary);
+}
+
+.summary-item-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.summary-price {
+  font-weight: 700;
+  font-size: 0.82rem;
+  color: var(--amber);
+}
+
+.summary-remove {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 1rem;
+  line-height: 1;
+  padding: 0 2px;
+  transition: color var(--transition);
+}
+
+.summary-remove:hover {
+  color: var(--danger);
+}
+
+.summary-total-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0 0;
+  border-top: 1px solid var(--border);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.total-fire-price {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 800;
+  background: var(--gradient-fire);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ─────────────────────────────────────────
+   ACCESSORY PICKER PANEL
+───────────────────────────────────────── */
+.accessory-picker-panel {
+  position: sticky;
+  top: 76px;
+  align-self: start;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  height: calc(100vh - 100px);
+}
+
+/* ── Search Bar ── */
+.acc-search-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--bg-input);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 0 14px;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.acc-search-bar:focus-within {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(255, 107, 44, 0.10);
+}
+
+.search-icon {
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+
+.acc-search-input {
+  flex: 1;
+  background: none;
+  border: none;
+  outline: none;
+  color: var(--text-primary);
+  font-size: 0.875rem;
+  padding: 11px 0;
+  font-family: inherit;
+}
+
+.acc-search-input::placeholder {
+  color: var(--text-muted);
+}
+
+.search-clear {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 1.1rem;
+  padding: 0;
+  line-height: 1;
+  transition: color var(--transition);
+}
+
+.search-clear:hover {
+  color: var(--text-primary);
+}
+
+/* ── Category Filter Bar ── */
+.category-filter-bar {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  padding: 2px 0 4px;
+  scrollbar-width: none;
+}
+
+.category-filter-bar::-webkit-scrollbar {
+  display: none;
+}
+
+.cat-filter-btn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 12px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 99px;
+  cursor: pointer;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  transition: all var(--transition);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.cat-filter-btn:hover {
+  border-color: var(--border-metallic);
+  color: var(--text-primary);
+  background: var(--bg-card-hover);
+}
+
+.cat-filter-btn.active {
+  background: var(--primary-subtle);
+  border-color: var(--border-active);
+  color: var(--primary-light);
+  box-shadow: 0 0 0 1px rgba(255, 107, 44, 0.15);
+}
+
+.cat-icon {
+  font-size: 0.85rem;
+}
+
+/* ── Results Meta ── */
+.acc-results-meta {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  letter-spacing: 0.03em;
+}
+
+/* ── Accessory List ── */
+.accessory-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  overflow-y: auto;
+  flex: 1;
+  padding-right: 2px;
+}
+
+.accessory-list::-webkit-scrollbar {
+  width: 3px;
+}
+
+.accessory-list::-webkit-scrollbar-thumb {
+  background: rgba(255, 107, 44, 0.25);
+  border-radius: 2px;
+}
+
+/* ── Accessory Card (New Design) ── */
+.acc-list-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--transition);
+  position: relative;
+}
+
+.acc-list-card:hover {
+  border-color: var(--border-metallic) !important;
+  background: var(--bg-card-hover);
+  transform: translateX(3px);
+}
+
+.acc-list-card.selected {
+  transform: translateX(2px);
+  background: linear-gradient(145deg, rgba(255, 107, 44, 0.05), transparent);
+}
+
+.acc-card-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+  min-width: 0;
+}
+
+.acc-card-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-sm);
+  background: var(--acc-cat-bg);
+  border: 1px solid var(--acc-cat-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 1.4rem;
+  transition: all var(--transition);
+}
+
+.acc-card-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.acc-card-brand {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+}
+
+.acc-card-name {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.acc-card-desc {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.acc-card-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+  flex-shrink: 0;
+  margin-left: 12px;
+}
+
+.acc-card-price {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.acc-card-toggle {
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-light);
+  color: var(--text-muted);
+  transition: all var(--transition);
+}
+
+.acc-card-toggle.on {
+  background: rgba(255, 107, 44, 0.1);
+  border-color: currentColor;
+}
+
+/* ── Responsive ── */
+@media (max-width: 1000px) {
+  .customize-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .accessory-picker-panel {
+    position: static;
+    height: auto;
+  }
+
+  .accessory-list {
+    max-height: 480px;
+  }
+}
+
+@media (max-width: 600px) {
+  .bike-selector-btn {
+    min-width: 130px;
+    padding: 10px 14px;
+  }
+
+  .photo-viewer-wrap {
+    height: 240px;
+  }
+}

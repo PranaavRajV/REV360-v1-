@@ -1,0 +1,764 @@
+/* ─────────────────────────────────────────
+   BIKE RECORD — Digital Record System Styles
+───────────────────────────────────────── */
+
+/* ── Header ── */
+.br-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.vehicle-select {
+  min-width: 240px;
+  max-width: 300px;
+}
+
+/* ── Overview Row ── */
+.br-overview {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr 1.5fr;
+  gap: 14px;
+  margin-bottom: 28px;
+}
+
+/* ── Vehicle Info Card ── */
+.br-vehicle-card {
+  padding: 22px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.br-vehicle-badge {
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--primary);
+  background: var(--primary-subtle);
+  border: 1px solid var(--border-active);
+  padding: 3px 10px;
+  border-radius: var(--radius-xs);
+  width: fit-content;
+}
+
+.br-vehicle-name {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  margin: 0;
+  line-height: 1.15;
+}
+
+.br-vehicle-meta {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  text-transform: capitalize;
+}
+
+.br-vehicle-km {
+  margin-top: 8px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+}
+
+.br-km-val {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--primary-light);
+}
+
+.br-km-lbl {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-left: 4px;
+}
+
+/* ── Stat Cards ── */
+.br-stat-card {
+  padding: 18px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.br-stat-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+}
+
+.br-stat-val {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+  line-height: 1;
+}
+
+.br-stat-lbl {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+/* ── Resale Score Card ── */
+.br-resale-card {
+  padding: 18px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.resale-header {
+  width: 100%;
+  margin-bottom: 4px;
+}
+
+.health-ring-wrap {
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+
+.health-ring-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.ring-track {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.06);
+  stroke-width: 10;
+}
+
+.ring-fill {
+  fill: none;
+  stroke-width: 10;
+  transition: stroke-dasharray 0.6s ease;
+}
+
+.health-ring-center {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.ring-value {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.35rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.ring-label {
+  font-size: 0.55rem;
+  color: var(--text-muted);
+}
+
+.resale-score-number {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 800;
+}
+
+.resale-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.resale-breakdown {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  width: 100%;
+  border-top: 1px solid var(--border);
+  padding-top: 8px;
+  margin-top: 2px;
+}
+
+/* ── Tab Navigation ── */
+.br-tabs {
+  display: flex;
+  gap: 4px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 24px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.br-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.br-tab-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 18px;
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  transition: all var(--transition);
+  white-space: nowrap;
+  position: relative;
+  bottom: -1px;
+}
+
+.br-tab-btn:hover {
+  color: var(--text-primary);
+}
+
+.br-tab-btn.active {
+  color: var(--primary-light);
+  border-bottom-color: var(--primary);
+}
+
+.br-tab-icon {
+  font-size: 1rem;
+}
+
+/* ── Tab Content ── */
+.br-tab-content {
+  padding-bottom: 60px;
+}
+
+.tab-pane {
+  animation: fadeSlideIn 0.25s ease;
+}
+
+/* ── Records List ── */
+.records-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.record-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 16px 18px;
+  gap: 16px;
+  transition: border-color var(--transition), transform var(--transition);
+}
+
+.record-card:hover {
+  border-color: var(--border-metallic);
+  transform: translateY(-1px);
+}
+
+.record-left {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  flex: 1;
+  min-width: 0;
+}
+
+.service-type-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-top: 5px;
+  flex-shrink: 0;
+}
+
+.type-regular {
+  background: #3ECF8E;
+}
+
+.type-repair {
+  background: #F5A623;
+}
+
+.type-inspection {
+  background: #4A9EFF;
+}
+
+.type-emergency {
+  background: #E5534B;
+}
+
+.maint-icon {
+  font-size: 1.2rem;
+  margin-top: 2px;
+}
+
+.record-title {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.record-date {
+  font-size: 0.76rem;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.record-desc {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  margin-top: 4px;
+  line-height: 1.4;
+}
+
+.record-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 6px;
+}
+
+.item-chip {
+  font-size: 0.68rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: var(--radius-xs);
+  background: rgba(255, 107, 44, 0.08);
+  color: var(--primary-light);
+  border: 1px solid rgba(255, 107, 44, 0.2);
+}
+
+.record-next {
+  font-size: 0.75rem;
+  color: var(--amber);
+  margin-top: 4px;
+}
+
+.record-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.record-km {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.record-cost {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--amber);
+}
+
+.record-tech {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+.btn-icon-danger {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  opacity: 0.5;
+  transition: opacity var(--transition);
+  padding: 2px;
+}
+
+.btn-icon-danger:hover {
+  opacity: 1;
+}
+
+/* ── Upgrades Grid ── */
+.upgrade-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 14px;
+}
+
+.upgrade-card {
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.upgrade-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.upgrade-badge {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--amber);
+  background: var(--amber-subtle);
+  border: 1px solid var(--border-amber);
+  padding: 2px 8px;
+  border-radius: var(--radius-xs);
+}
+
+.upgrade-part {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: 0.02em;
+}
+
+.upgrade-brand {
+  font-size: 0.78rem;
+  color: var(--secondary);
+  font-weight: 600;
+}
+
+.upgrade-meta {
+  display: flex;
+  gap: 10px;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  flex-wrap: wrap;
+}
+
+.upgrade-cost {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--primary-light);
+  margin-top: 4px;
+}
+
+.upgrade-notes {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  border-top: 1px solid var(--border-light);
+  padding-top: 6px;
+  margin-top: 2px;
+  line-height: 1.4;
+}
+
+/* ── Condition Grid ── */
+.condition-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 20px;
+}
+
+.condition-items-panel {
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.condition-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.condition-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 160px;
+}
+
+.condition-ci-icon {
+  font-size: 1rem;
+}
+
+.condition-ci-label {
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.condition-slider-wrap {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.condition-slider {
+  flex: 1;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4px;
+  background: var(--border);
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+}
+
+.condition-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--slider-color, var(--primary));
+  cursor: pointer;
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  transition: transform var(--transition);
+}
+
+.condition-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+}
+
+.condition-value-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: var(--radius-xs);
+  border: 1px solid;
+  white-space: nowrap;
+  min-width: 80px;
+  text-align: center;
+}
+
+/* ── Resale Summary Card ── */
+.condition-summary-panel {
+  position: sticky;
+  top: 80px;
+  align-self: start;
+}
+
+.resale-summary-card {
+  padding: 22px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.resale-big-score {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 3.5rem;
+  font-weight: 900;
+  line-height: 1;
+  margin-top: 4px;
+}
+
+.resale-big-label {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.resale-factors {
+  width: 100%;
+  border-top: 1px solid var(--border);
+  padding-top: 12px;
+  margin-top: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.factor-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.resale-tip {
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  text-align: center;
+  border-top: 1px solid var(--border);
+  padding-top: 12px;
+  margin-top: 4px;
+}
+
+/* ── Modal ── */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--bg-overlay);
+  z-index: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: fadeSlideIn 0.18s ease;
+}
+
+.modal-box {
+  width: 100%;
+  max-width: 540px;
+  max-height: 85vh;
+  overflow-y: auto;
+  border: 1px solid var(--border-metallic);
+  box-shadow: var(--shadow-lg);
+}
+
+.modal-header {
+  padding: 18px 22px 14px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-header h3 {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  font-size: 1.4rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  line-height: 1;
+  transition: color var(--transition);
+}
+
+.modal-close:hover {
+  color: var(--text-primary);
+}
+
+.modal-body {
+  padding: 20px 22px;
+}
+
+.modal-footer {
+  padding: 14px 22px 20px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  border-top: 1px solid var(--border);
+}
+
+.form-row-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+/* ── Print Styles ── */
+@media print {
+
+  .navbar,
+  .br-header-actions,
+  .br-tabs,
+  .btn,
+  .modal-overlay,
+  .btn-icon-danger {
+    display: none !important;
+  }
+
+  .br-tab-content .tab-pane {
+    display: block !important;
+  }
+
+  .container {
+    max-width: 100%;
+    padding: 0;
+  }
+
+  body {
+    background: white;
+    color: black;
+  }
+}
+
+/* ── Responsive ── */
+@media (max-width: 1100px) {
+  .br-overview {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .br-vehicle-card {
+    grid-column: 1 / -1;
+  }
+
+  .br-resale-card {
+    grid-column: 1 / -1;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .br-overview {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .condition-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .condition-summary-panel {
+    position: static;
+  }
+
+  .form-row-2 {
+    grid-template-columns: 1fr;
+  }
+
+  .upgrade-grid {
+    grid-template-columns: 1fr;
+  }
+}
+/* Timeline Design Inject */
+.records-list {
+  position: relative;
+  border-left: 2px dashed rgba(255, 107, 44, 0.4);
+  margin-left: 10px;
+  padding-left: 20px;
+}
+.record-card {
+  position: relative;
+  margin-bottom: 24px;
+}
+.record-card::before {
+  content: '';
+  position: absolute;
+  left: -28px;
+  top: 14px;
+  width: 14px;
+  height: 14px;
+  background: var(--primary);
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(255,107,44,0.6);
+}
