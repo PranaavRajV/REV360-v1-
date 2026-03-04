@@ -109,23 +109,7 @@ export default function BikeRecord() {
     }).catch(() => { }).finally(() => setLoading(false));
   }, [selectedVehicle]);
 
-  // Compute resale score from condition ratings
-  const avgCondition = Object.values(conditions).reduce((a, b) => a + b, 0) / CONDITION_ITEMS.length;
-  const serviceBonus = Math.min(serviceRecords.length * 3, 20);
-  const upgradeBonus = Math.min(upgrades.length * 2, 10);
-  const baseScore = isNaN(selectedVehicleObj?.engineHealthScore) ? 100 : selectedVehicleObj?.engineHealthScore || 100;
-  // Compute true score based on backend factors but with UI modifiers
-  const resaleScore = Math.min(100, Math.round(baseScore * 0.8 + avgCondition * 4));
-
-  const resaleLabel =
-    resaleScore >= 85 ? 'Premium' :
-      resaleScore >= 70 ? 'Good' :
-        resaleScore >= 50 ? 'Fair' : 'Needs Work';
-
-  const resaleColor =
-    resaleScore >= 85 ? '#3ECF8E' :
-      resaleScore >= 70 ? '#4A9EFF' :
-        resaleScore >= 50 ? '#F5A623' : '#E5534B';
+  // ⚠️ score variables are computed AFTER selectedVehicleObj is declared below
 
   // Handlers
   const submitService = async () => {
@@ -189,6 +173,23 @@ export default function BikeRecord() {
   const handlePrint = () => window.print();
 
   const selectedVehicleObj = vehicles.find((v) => v._id === selectedVehicle);
+
+  // Compute resale score from condition ratings (must be after selectedVehicleObj)
+  const avgCondition = Object.values(conditions).reduce((a, b) => a + b, 0) / CONDITION_ITEMS.length;
+  const serviceBonus = Math.min(serviceRecords.length * 3, 20);
+  const upgradeBonus = Math.min(upgrades.length * 2, 10);
+  const baseScore = isNaN(selectedVehicleObj?.engineHealthScore) ? 100 : selectedVehicleObj?.engineHealthScore || 100;
+  const resaleScore = Math.min(100, Math.round(baseScore * 0.8 + avgCondition * 4));
+
+  const resaleLabel =
+    resaleScore >= 85 ? 'Premium' :
+      resaleScore >= 70 ? 'Good' :
+        resaleScore >= 50 ? 'Fair' : 'Needs Work';
+
+  const resaleColor =
+    resaleScore >= 85 ? '#3ECF8E' :
+      resaleScore >= 70 ? '#4A9EFF' :
+        resaleScore >= 50 ? '#F5A623' : '#E5534B';
 
   return (
     <div className="page-active container" ref={printRef}>
